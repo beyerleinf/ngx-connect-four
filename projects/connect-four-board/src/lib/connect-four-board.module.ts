@@ -1,10 +1,5 @@
-import { NgModule } from '@angular/core';
-import { ConnectFourBoardComponent } from './connect-four-board.component';
+import {NgModule} from '@angular/core';
 
-@NgModule({
-  imports: [
-  ],
-  declarations: [ConnectFourBoardComponent],
-  exports: [ConnectFourBoardComponent]
-})
-export class ConnectFourBoardModule { }
+@NgModule({imports: [], declarations: [], exports: []})
+export class ConnectFourBoardModule {
+}
