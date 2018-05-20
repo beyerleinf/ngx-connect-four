@@ -1,0 +1,51 @@
+sudo: required
+addons:
+  firefox: latest
+  chrome: stable
+os:
+- linux
+language: node_js
+node_js:
+- '8'
+
+stages:
+- lint
+- test
+- build
+- name: package
+  if: branch = master
+- name: deploy
+  if: branch = master
+
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+
+install:
+- npm install
+
+after_success:
+- npm run codecov
+
+jobs:
+  include:
+    - stage: lint
+      script:
+      - npm run lint.cfb
+    - stage: test
+      script:
+      - npm run test.cfb
+    - stage: build
+      script:
+      - npm run build.cfb
+    - stage: package
+      script:
+      - npm run build.cfb
+    - stage: deploy
+      deploy:
+        provider: npm
+        email: mail@fabian-b.de
+        api_key:
+          secure: EyG4Ioq5juFPP6VmPkq5cdeTK+zYNsH3lqNK/KpfJNvoau1aD1hZz0iNdYPerMv/QIyeN7g5kLy0TyyF5BL3fUJ0leLfHSU5s9K0IyBrZCXC20DNF2RvxHSkvDBvsL4LxnHKMIamwd8bebQBZekAFTdHi6Ab8ZAdjK5bvIG7gHJCBLR8IhUaMhYIkpFcjdxZey9KXq6GCt1TnhpECJmXk3uZvKQzMvVxY5h0We/x9JhJi3F5f3EIyPFWLSmFR06tttZ0WaTlaVzHOOJdosqkpqsefUJnEintumMcxaJpMcUPX7YHtzDMN1O7C13IVhvXCLvVkr44PHAhISuEtAp+L404UjooL7uOliPnEjBLHuyLf9t9CJbuHLT9ISM17nzUzdGfonpHxvUVij+eCcOKfFJdAHh6D2uMRWzc7MczsB2Q+bmPQ89uRN440qo6kTR6Fihb6Rh7GHTk0EwIc92UhWKWfvhf3uRic+FRvESAl/k2GTU8cu2O64kozONAO9JzP80/rzNZzskooSOERJGcpu4TmD8olj6JLDoZdeI8PfyyJof2CxP3D5nJEbxs3cNqHVI1oOYPhtEYIvhQNxzrUHtBXShofnV33mPKSJcfoz3TAy4bk4ic5mqLnKWR2gDtGI0JlL4ogUDXVGL+1Amfb486mm3X1hF5Me//2AAhVrk=
+        on:
+          branch: master
