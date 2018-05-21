@@ -46,6 +46,20 @@ export class BoardItemComponent implements OnChanges {
   @Input() playerTwoColor: string = '#FF0000';
 
   /**
+   * A hex representation of the color of the item background.
+   * This can only be in hex format. Values like `red` or `blue` will not work.
+   * When the value is invalid it will use its default value.
+   *
+   * It has been verified that the verification of the hex input will be
+   * guaranteed to work with all of the web safe colors.
+   *
+   * @default '#0000FF'
+   * @see https://websafecolors.info/color-chart
+   * @memberof BoardItemComponent
+   */
+  @Input() backgroundColor: string = '#0000FF';
+
+  /**
    * Creates an instance of BoardItemComponent.
    * @memberof BoardItemComponent
    */
@@ -58,14 +72,25 @@ export class BoardItemComponent implements OnChanges {
    * @memberof BoardItemComponent
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.validateHexColor(changes['playerOneColor'].currentValue)) {
-      console.warn(changes['playerOneColor'].currentValue, 'is not a valid color. Using #FFFF00 instead.');
-      this.playerOneColor = '#FFFF00';
+    if (changes['playerOneColor'].currentValue) {
+      if (!this.validateHexColor(changes['playerOneColor'].currentValue)) {
+        console.warn(changes['playerOneColor'].currentValue, 'is not a valid color. Using #FFFF00 instead.');
+        this.playerOneColor = '#FFFF00';
+      }
     }
 
-    if (!this.validateHexColor(changes['playerTwoColor'].currentValue)) {
-      console.warn(changes['playerTwoColor'].currentValue, 'is not a valid color. Using #FF0000 instead.');
-      this.playerTwoColor = '#FF0000';
+    if (changes['playerTwoColor'].currentValue) {
+      if (!this.validateHexColor(changes['playerTwoColor'].currentValue)) {
+        console.warn(changes['playerTwoColor'].currentValue, 'is not a valid color. Using #FF0000 instead.');
+        this.playerTwoColor = '#FF0000';
+      }
+    }
+
+    if (changes['backgroundColor'].currentValue) {
+      if (!this.validateHexColor(changes['backgroundColor'].currentValue)) {
+        console.warn(changes['backgroundColor'].currentValue, 'is not a valid color. Using #0000FF instead.');
+        this.backgroundColor = '#0000FF';
+      }
     }
   }
 

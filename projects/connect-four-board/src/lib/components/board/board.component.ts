@@ -44,6 +44,20 @@ export class BoardComponent {
   @Input() playerTwoColor: string = '#FF0000';
 
   /**
+   * A hex representation of the color of the item background.
+   * This can only be in hex format. Values like `red` or `blue` will not work.
+   * When the value is invalid it will use its default value.
+   *
+   * It has been verified that the verification of the hex input will be
+   * guaranteed to work with all of the web safe colors.
+   *
+   * @default '#0000FF'
+   * @see https://websafecolors.info/color-chart
+   * @memberof BoardItemComponent
+   */
+  @Input() backgroundColor: string = '#0000FF';
+
+  /**
    * Creates an instance of BoardComponent.
    * @memberof BoardComponent
    */

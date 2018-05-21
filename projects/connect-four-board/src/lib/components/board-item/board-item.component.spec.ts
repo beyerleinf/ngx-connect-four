@@ -20,20 +20,22 @@ describe('ConnectFourGridItemComponent', () => {
   });
 
   describe('ngOnChanges', () => {
-    it('should call console.warn twice when validateHexColor returns false', () => {
+    it('should call console.warn three times when validateHexColor returns false', () => {
       const spy = spyOn(console, 'warn').and.callFake(() => {});
       spyOn(component, 'validateHexColor').and.returnValue(false);
 
       component.playerOneColor = 'SomeRandomColor';
       component.playerTwoColor = 'SomeRandomColor';
+      component.backgroundColor = 'SomeRandomColor';
 
       component.ngOnChanges({
         playerOneColor: new SimpleChange(null, component.playerOneColor, true),
-        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true)
+        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true),
+        backgroundColor: new SimpleChange(null, component.backgroundColor, true)
       });
 
       expect(spy).toHaveBeenCalled();
-      expect(spy).toHaveBeenCalledTimes(2);
+      expect(spy).toHaveBeenCalledTimes(3);
     });
 
     it('should set playerOneColor to #FFFF00 when validateHexColor returns false', () => {
@@ -42,10 +44,12 @@ describe('ConnectFourGridItemComponent', () => {
 
       component.playerOneColor = 'SomeRandomColor';
       component.playerTwoColor = 'SomeRandomColor';
+      component.backgroundColor = 'SomeRandomColor';
 
       component.ngOnChanges({
         playerOneColor: new SimpleChange(null, component.playerOneColor, true),
-        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true)
+        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true),
+        backgroundColor: new SimpleChange(null, component.backgroundColor, true)
       });
 
       expect(component.playerOneColor).toBe('#FFFF00');
@@ -57,13 +61,32 @@ describe('ConnectFourGridItemComponent', () => {
 
       component.playerOneColor = 'SomeRandomColor';
       component.playerTwoColor = 'SomeRandomColor';
+      component.backgroundColor = 'SomeRandomColor';
 
       component.ngOnChanges({
         playerOneColor: new SimpleChange(null, component.playerOneColor, true),
-        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true)
+        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true),
+        backgroundColor: new SimpleChange(null, component.backgroundColor, true)
       });
 
       expect(component.playerTwoColor).toBe('#FF0000');
+    });
+
+    it('should set backgroundColor to #0000FF when validateHexColor returns false', () => {
+      spyOn(console, 'warn').and.callFake(() => {});
+      spyOn(component, 'validateHexColor').and.returnValue(false);
+
+      component.playerOneColor = 'SomeRandomColor';
+      component.playerTwoColor = 'SomeRandomColor';
+      component.backgroundColor = 'SomeRandomColor';
+
+      component.ngOnChanges({
+        playerOneColor: new SimpleChange(null, component.playerOneColor, true),
+        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true),
+        backgroundColor: new SimpleChange(null, component.backgroundColor, true)
+      });
+
+      expect(component.backgroundColor).toBe('#0000FF');
     });
 
     it('should leave colors at set value when validateHexColor returns true', () => {
@@ -72,14 +95,17 @@ describe('ConnectFourGridItemComponent', () => {
 
       component.playerOneColor = 'SomeRandomColor';
       component.playerTwoColor = 'SomeRandomColor';
+      component.backgroundColor = 'SomeRandomColor';
 
       component.ngOnChanges({
         playerOneColor: new SimpleChange(null, component.playerOneColor, true),
-        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true)
+        playerTwoColor: new SimpleChange(null, component.playerTwoColor, true),
+        backgroundColor: new SimpleChange(null, component.backgroundColor, true)
       });
 
       expect(component.playerOneColor).toBe('SomeRandomColor');
       expect(component.playerTwoColor).toBe('SomeRandomColor');
+      expect(component.backgroundColor).toBe('SomeRandomColor');
     });
   });
 
