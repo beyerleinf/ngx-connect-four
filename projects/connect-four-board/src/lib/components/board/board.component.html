@@ -2,7 +2,7 @@
   <tr *ngFor="let row of board | reverse">
     <td>
       <cfb-board-item *ngFor="let item of row" [ownedBy]="item" [playerOneColor]="playerOneColor" [playerTwoColor]="playerTwoColor"
-        [backgroundColor]="backgroundColor"></cfb-board-item>
+        [backgroundColor]="backgroundColor" [customBorderClasses]="customBorderClasses" [customChipClasses]="customChipClasses"></cfb-board-item>
     </td>
   </tr>
 </table>

@@ -60,6 +60,25 @@ export class BoardItemComponent implements OnChanges {
   @Input() backgroundColor: string = '#0000FF';
 
   /**
+   * Custom classes you can apply to the border of each item.
+   * Note that you are not able to change `background-color` this way.
+   * Use `backgroundColor` to do this.
+   *
+   * @memberof BoardItemComponent
+   */
+  @Input() customBorderClasses: string[];
+
+  /**
+   * Custom classes you can apply to the chip of each item.
+   * Note that you are not able to change `background-color` this way.
+   * Use `playerOneColor` and `playerTwoColor` to do this.
+   *
+   * @type {string[]}
+   * @memberof BoardItemComponent
+   */
+  @Input() customChipClasses: string[];
+
+  /**
    * Creates an instance of BoardItemComponent.
    * @memberof BoardItemComponent
    */

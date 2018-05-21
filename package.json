@@ -9,7 +9,7 @@
     "lint": "./node_modules/.bin/ng lint",
     "e2e": "./node_modules/.bin/ng e2e",
     "doc.all": "npm run doc.cfb",
-    "doc.cfb": "./node_modules/.bin/compodoc -p ./projects/connect-four-board/tsconfig.lib.json -d ./docs/ngx-cfb",
+    "doc.cfb": "./node_modules/.bin/compodoc -p ./projects/connect-four-board/tsconfig.lib.json -d ./docs/ngx-cfb --theme material",
     "build.cfb": "./node_modules/.bin/ng build connect-four-board",
     "build.cfb.prod": "./node_modules/.bin/ng build connect-four-board --prod",
     "test.cfb": "./node_modules/.bin/ng test connect-four-board --code-coverage",

@@ -25,7 +25,7 @@ export class BoardComponent {
    *
    * @default '#FFFF00'
    * @see https://websafecolors.info/color-chart
-   * @memberof BoardItemComponent
+   * @memberof BoardComponent
    */
   @Input() playerOneColor: string = '#FFFF00';
 
@@ -39,7 +39,7 @@ export class BoardComponent {
    *
    * @default '#FF0000'
    * @see https://websafecolors.info/color-chart
-   * @memberof BoardItemComponent
+   * @memberof BoardComponent
    */
   @Input() playerTwoColor: string = '#FF0000';
 
@@ -53,9 +53,28 @@ export class BoardComponent {
    *
    * @default '#0000FF'
    * @see https://websafecolors.info/color-chart
-   * @memberof BoardItemComponent
+   * @memberof BoardComponent
    */
   @Input() backgroundColor: string = '#0000FF';
+
+  /**
+   * Custom classes you can apply to the border of each item.
+   * Note that you are not able to change `background-color` this way.
+   * Use `backgroundColor` to do this.
+   *
+   * @memberof BoardComponent
+   */
+  @Input() customBorderClasses: string[];
+
+  /**
+   * Custom classes you can apply to the chip of each item.
+   * Note that you are not able to change `background-color` this way.
+   * Use `playerOneColor` and `playerTwoColor` to do this.
+   *
+   * @type {string[]}
+   * @memberof BoardComponent
+   */
+  @Input() customChipClasses: string[];
 
   /**
    * Creates an instance of BoardComponent.

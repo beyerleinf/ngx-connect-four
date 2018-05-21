@@ -8,7 +8,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({name: 'reverse', pure: false})
 export class ReversePipe implements PipeTransform {
   /**
-   * transforms the given array.
+   * Transforms the given array.
    *
    * @param  values The array to transform.
    * @returns The given array in reverse order. Returns an empty array when
