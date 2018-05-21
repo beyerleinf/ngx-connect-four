@@ -7,45 +7,46 @@ os:
 language: node_js
 node_js:
 - '8'
-
 stages:
 - lint
 - test
 - build
 - name: package
   if: branch = master
-- name: deploy
+- name: doc
   if: branch = master
-
 before_install:
+- sudo apt install ncftp
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-
 install:
 - npm install
-
 after_success:
 - npm run codecov
-
 jobs:
   include:
-    - stage: lint
-      script:
-      - npm run lint.cfb
-    - stage: test
-      script:
-      - npm run test.cfb
-    - stage: build
-      script:
-      - npm run build.cfb
-    - stage: package
-      script:
-      - npm run build.cfb
-    - stage: deploy
-      deploy:
-        provider: npm
-        email: mail@fabian-b.de
-        api_key:
-          secure: EyG4Ioq5juFPP6VmPkq5cdeTK+zYNsH3lqNK/KpfJNvoau1aD1hZz0iNdYPerMv/QIyeN7g5kLy0TyyF5BL3fUJ0leLfHSU5s9K0IyBrZCXC20DNF2RvxHSkvDBvsL4LxnHKMIamwd8bebQBZekAFTdHi6Ab8ZAdjK5bvIG7gHJCBLR8IhUaMhYIkpFcjdxZey9KXq6GCt1TnhpECJmXk3uZvKQzMvVxY5h0We/x9JhJi3F5f3EIyPFWLSmFR06tttZ0WaTlaVzHOOJdosqkpqsefUJnEintumMcxaJpMcUPX7YHtzDMN1O7C13IVhvXCLvVkr44PHAhISuEtAp+L404UjooL7uOliPnEjBLHuyLf9t9CJbuHLT9ISM17nzUzdGfonpHxvUVij+eCcOKfFJdAHh6D2uMRWzc7MczsB2Q+bmPQ89uRN440qo6kTR6Fihb6Rh7GHTk0EwIc92UhWKWfvhf3uRic+FRvESAl/k2GTU8cu2O64kozONAO9JzP80/rzNZzskooSOERJGcpu4TmD8olj6JLDoZdeI8PfyyJof2CxP3D5nJEbxs3cNqHVI1oOYPhtEYIvhQNxzrUHtBXShofnV33mPKSJcfoz3TAy4bk4ic5mqLnKWR2gDtGI0JlL4ogUDXVGL+1Amfb486mm3X1hF5Me//2AAhVrk=
-        on:
-          branch: master
+  - stage: lint
+    script:
+    - npm run lint.all
+  - stage: test
+    script:
+    - npm run test.all
+    - npm run codecov
+  - stage: build
+    script:
+    - npm run build.cfb.prod
+  - stage: package
+    script:
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run build.cfb.prod; fi
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" npm login; fi
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm publish dist; fi
+  - stage: doc
+    script:
+    - npm run doc.all
+env:
+  global:
+  - secure: m5C+oSm5OB0cwgsiXv3D6SpYZmnXnWzKY5mCVafCUEg5IxTkTa1JaEnVcuRQ1rItttEq1/3whv8Izq4hahsEDNi+76VR4v1LbyDl/LuZd14bcefRtboNbec8/7LsYBvUiQer14zvJBhyhudP9/TVBovL0aigMK8M7hRwpNELDp02piixJoDF+4+Wq875jCxDuNFb439+djsnOwZ8velO/Dn9mYgTVX0DJYAj8LJEdIE1GzVAcMp4hepKN6B2MTQCIUHzFTnklM1m5aevIAKXq+9qWDj2SHKPXOKNnjF7tfruywgGT7ShHJ1myt/jY3CDpzLxpfWXHf2r4ie9hoCGP7OCIt7nYJb0s3LR81vR3fTLJgAlIGai/xNYCCMG0+YS+lyMb7nAx6FUDTzIxoDaC8u7GPV/sRYXXtUJOCByAtZDNWtLfWt7ees4yXG88QIrhU+rRr7sJSnWtaj85Dx50EppIT73h7t6I9NXVPWHOgqaBYqagwbir/KElHChEP53hjz/jD3uKyZ9Z9YDKuQQgaOQaoL9nLk/LkMzUfMRSXP2POKq63lEpDnSNU0azb5zGnrIW24WHlFUcpPLHe1TKpOdEI2ZpF+FSIjGDedKvFnTH0uw2qHlh98pdaPAR8LZJ8FWNceZwysfuDJtJ49Ex0CnMHEJ9QzztYHEaqqW7yM=
+  - secure: brTwzLNkmWjLjwSfigtiimPkp+/zLjdj/bOcWpEFpKX6yU5Wn08jjfCqQkAhR7FQUvGOAtWp4V8jzDe+ka5ANHwCZfLleGuAAo3tB5EMFzn1T40FfPKlvLCQjlUBn90tVpw92Zibsa/Hr3bd+bReWDnnIA8QmyIdOmQVZxIUzRnegfvOQSQynKLNyWr3wI9umNHnHzg++W/atQ587SAUAuph1H9Su0igXSTHGzWzX5HTRiBPHn3kpFYD26EngXOdhtJbRepHRcykPqcKFUqIn6h88yy4Vl9lXfqdgx/IjdhZEeg3FUsd/7a9WPAQ0tBP2JDhXsA+10nBDvI2vcmVTOiO/MlfXXk45qyUDcd+l89E/GFO0TsDnv07Vlpk4QYCrJw/AGfLDoqqZnhcC1XZSi8k1TiogEx2GLiP8eQ8aZshdj13kYG51gAwh1OFAXSMRt28gKs7nl0TnDC7YmRNgWd2OIMtLCgl8jX9vTJi/eVMh9mcqFE36xEaFgTYdoiMdqoYkHodZwAztd0vJOFRmkiymWvC4ewONoZ0wzcs6QOVN4GrW770jDasVBv9XU3ZQkNDfbHXjlKKN3s4bO0DQgp65VlJ7MeE4D8yDRsuVedc9motnXgckEhOkJ4kmX+GfUaMhSdjKVLFmhLGT5+dh2MZvHrqmuRheh6DYAT2Nr0=
+  - secure: lY061AeGCwQJ75c/8AJIZ6rKpUqKBp050GHGRWVEO83CAo0Cf6lbdQBl7Opmd6ROXXaZndCFpjEv6QhWirMxufX1iopWtIhB1dQdctNLY4gc8+Q2DUmuDj7QhjX1guBpBPQcHHioRPvdiySZpxy3tjgBHIsgH33YcXpJ/qDUsy++HRzmzr7KZvrtmX46gppp4gnJlBhpMasKOSCdReCpSePPtSJWGj3QNT1yl9h5Dv5sKfzTk5QqlvPpiIZH4DwaewFaNz4C05+InR63MLvefbmXjlhPyOcKLYb6g6hbEBV8kTbkNf2uCc29s/QE9FrbzbK9LOnoHNsiHMSXGfUzl8cHhpIle+F18c6hGQH23clgasTVTjO/kJu0Q3rp6qxbUgJmXhvM8S2vxArnhWjaN9eU76pXbDp3BQhr3mppzwCTt0W0jwefsVdsW2EhesAh0MXyI/Xh8I3j36/j5vFdZeiglCZNl+F2oz3WAGKkZB5hTiTdk6KN8pyPMapZiyegFTuhaXUBqTFEyhQngsS62PEbvwSykalzvKBKXIFudxf71+lkRxWsHfqRsj6/aqsQMzuiPLJnx6tUp5IWCj7WZMwx34rEti5bPAC5yhRFXYq1VLYluymIybIYMs+Tvwn9Bpbt28noKzWsOZ7KQ+dRPUTN/UzW+162e1cEN5myPDQ=
+  - secure: oWxUVqlOBpFxnVPwsZIDiZbj+CbiuL9TQ87pccF1rSim1cLwvMWC99S17q0n89TYHMqt/BDtTYxyqvHGBMruEkjHURVxyU7ypHIEo+smh60jNR6GO6K0bODl67i9Qj4xjVkRt1HuIyHPRFEDPFit6qhFo6T0+8OrBq7E5L14hC7C/XNTD2jpPxxr1EXcsJX3whmIiYbEd6OmhXdXMr4PRKtUACjaS/M5AxLoXkT5X3BzmetiJ/RgDlz0gYq/bdCAUIm2+4LtM1jskPmeBQVQsCFD6X3emU0fqabcROTZhmg9ntZpGjNEVZaCzcB3jgS95ipkCT18YxAxoump5vqJioAi9rQNmjGrxdOEcK3JJcBHw6+61Vz4cx3VjQNBVsQ10fpjS727/MtrqY/wBUlTcaPWF/94L+4jUN/qsSgB929UXHjd3tg2+y9uAKuKa5fTqlSb6SqZm/Mfhxiz4H+KC9FYWgfgx3Z6NegbNWjx5Pd9SquxhKlyQbjuopPXBRAJrfqdU9fFOj19lhA/PUyWFGXlrSjwA/cT4o6L999ltPc0vvgLHDai//sTR2KwpJY4W+QF4+0AdooFtW4YKUnkgUB/Ni0mZcafOfOspHAEJt7OVVL14RMV6pbZ+BN16nkHc7y5wOuLG00YoaO2s8u/yHVPhbDC+oXqrbgiW+qvZE0=
+  - secure: IjdU3NEx/UPAJqyAGzS7qOQWO3XUKAq54F65XwOELHvcc6l50ud+HnP/dyA/19t1fNP1SG5eDh/D+josDgOjfI/5zQLNR4d+bDVSoTxZdMOc+Sm8l7sXyvlb6b4tnYp3CEVSdjkh6rT+bvUZlAtigDYcyOR1nyfTKYUrf99xA0OFRxG3fMtSkxaHvuofPD/Fsh6npJDU6P6uNltnbJTvftagWk0HfkbjezQC3JJZjvsPjphdcgAGxdpC+SIitrHOJ4VfbIPJw1FvG44HdyUv8XctowEo/K90AiTmzur/mZdqdZ5g2qu8nTFM7IiHOgo3e1D9wz9rlcSKNPV61ewYG5QxQHlJIiw3AVT5B5/UieqACVNcsbJR6OQv8LGafIPRqR/PTUqwoYoPDLtLkksfk4IN+iBHIjMYZ3fu5BfiTcYZKeje0lcNOwq0q9Q5n/XWX+sHq8J0eOyRh1U4HIJG77KK24lqV+sRZh6ulmhoHN3SBWHtJNmqRFcvryD6+EK8cwiu3W/3Y5A2XAJeM6vsDGzVk5QrxKIcfXCGOWCqvoDuEVTAs6NlfYGS6tdR8X1jREs3wnz0h+t6aIqNRNy3LYqKqimBVTTW0U5On3S2copCjqlRYeq6cPpTVIQKMcMjDV7fWoRsqLX85wTlzUsz23NZ7OlxAlyLRXqnmqnVPEw=
