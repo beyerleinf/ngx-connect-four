@@ -71,7 +71,6 @@ export class BoardComponent {
    * Note that you are not able to change `background-color` this way.
    * Use `playerOneColor` and `playerTwoColor` to do this.
    *
-   * @type {string[]}
    * @memberof BoardComponent
    */
   @Input() customChipClasses: string[];
