@@ -24,8 +24,8 @@ script:
 - if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL"; fi
 - if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm login; fi
 - if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm publish dist; fi
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; npm run doc.all; fi
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; sh deploy-docs.sh; fi
+- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run doc.all; fi
+- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then sh deploy-docs.sh; fi
 after_success:
 - npm run codecov
 env:
