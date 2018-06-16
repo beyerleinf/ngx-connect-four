@@ -2,21 +2,17 @@
   "name": "ngx-connect-four",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "./node_modules/.bin/ng serve",
-    "build": "./node_modules/.bin/ng build",
-    "test": "./node_modules/.bin/ng test",
-    "lint": "./node_modules/.bin/ng lint",
-    "e2e": "./node_modules/.bin/ng e2e",
     "doc.all": "npm run doc.cfb",
-    "doc.cfb": "./node_modules/.bin/compodoc -p ./projects/connect-four-board/tsconfig.lib.json -d ./docs/ngx-cfb --theme material",
-    "build.cfb": "./node_modules/.bin/ng build connect-four-board",
-    "build.cfb.prod": "./node_modules/.bin/ng build connect-four-board --prod",
+    "doc.cfb": "compodoc -p ./projects/connect-four-board/tsconfig.lib.json -d ./docs/ngx-cfb --theme material",
+    "build.all": "npm run build.cfb",
+    "build.all.prod": "npm run build.cfb.prod",
+    "build.cfb": "ng build connect-four-board",
+    "build.cfb.prod": "ng build connect-four-board --prod",
     "test.all": "npm run test.cfb",
-    "test.cfb": "./node_modules/.bin/ng test connect-four-board --code-coverage",
+    "test.cfb": "ng test connect-four-board --code-coverage",
     "codecov": "codecov -f coverage/*.json",
     "lint.all": "npm run lint.cfb",
-    "lint.cfb": "node_modules/.bin/tslint --project ./projects/connect-four-board/tsconfig.lib.json"
+    "lint.cfb": "tslint --project ./projects/connect-four-board/tsconfig.lib.json"
   },
   "private": true,
   "dependencies": {

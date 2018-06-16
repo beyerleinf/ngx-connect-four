@@ -19,6 +19,7 @@ stages:
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+- npm set progress false
 install:
 - npm install
 after_success:
