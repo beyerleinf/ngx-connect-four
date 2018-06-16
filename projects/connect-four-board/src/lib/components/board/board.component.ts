@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 /**
  * This components represents the complete board of the Connect Four game.
@@ -7,6 +7,14 @@ import {Component, Input} from '@angular/core';
  */
 @Component({selector: 'cfb-board', templateUrl: './board.component.html', styleUrls: ['./board.component.css']})
 export class BoardComponent {
+  /**
+   * This event will be emitted when a item on the board is clicked.
+   * The data will be column index.
+   *
+   * @memberof BoardComponent
+   */
+  @Output() drop: EventEmitter<number>;
+
   /**
    * A two dimensional array of numbers representing the play board.
    * The item at `board[0][0]` will be the bottom left item.
@@ -79,5 +87,17 @@ export class BoardComponent {
    * Creates an instance of BoardComponent.
    * @memberof BoardComponent
    */
-  constructor() {}
+  constructor() {
+    this.drop = new EventEmitter();
+  }
+
+  /**
+   * The method for when a item is clicked.
+   *
+   * @param column The column index.
+   * @memberof BoardComponent
+   */
+  itemClick(column: number): void {
+    this.drop.emit(column);
+  }
 }
