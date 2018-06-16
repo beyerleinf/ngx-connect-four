@@ -20,8 +20,8 @@ script:
 - npm run lint.all
 - npm run test.all
 - npm run build.cfb.prod
-- npm run doc.all
-- sh deploy-docs.sh
+# - npm run doc.all
+# - sh deploy-docs.sh
 after_success:
 - npm run codecov
 env:
