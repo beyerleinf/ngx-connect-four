@@ -2,13 +2,11 @@
 
 A simple to use Angular component library for Connect Four.
 
-[![Build Status](https://travis-ci.org/beyerleinf/ngx-connect-four.svg?branch=master)](https://travis-ci.org/beyerleinf/ngx-connect-four)
-[![codecov](https://codecov.io/gh/beyerleinf/ngx-connect-four/branch/master/graph/badge.svg)](https://codecov.io/gh/beyerleinf/ngx-connect-four)
-[![dependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four)
-[![devDependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/dev-status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four?type=dev)
-[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/beyerleinf/ngx-connect-four.svg)]()
-[![GitHub last commit](https://img.shields.io/github/last-commit/beyerleinf/ngx-connect-four.svg)]()
-[![license](https://img.shields.io/github/license/beyerleinf/ngx-connect-four.svg)]()
+![Maintenance](https://img.shields.io/maintenance/yes/2018.svg?style=flat-square) [![license](https://img.shields.io/github/license/beyerleinf/ngx-connect-four.svg?style=flat-square)](https://github.com/beyerleinf/ngx-connect-four/blob/master/LICENSE.md) ![npm (scoped)](https://img.shields.io/npm/v/@beyerleinf/ngx-connect-four.svg?style=flat-square)
+
+[![Travis](https://img.shields.io/travis/beyerleinf/ngx-connect-four.svg?style=flat-square)] [![codecov](https://codecov.io/gh/beyerleinf/ngx-connect-four/branch/master/graph/badge.svg)](https://codecov.io/gh/beyerleinf/ngx-connect-four) [![dependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four) [![devDependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/dev-status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/beyerleinf/ngx-connect-four/badge.svg)](https://snyk.io/test/github/beyerleinf/ngx-connect-four)
+
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/beyerleinf/ngx-connect-four.svg)]() [![GitHub last commit](https://img.shields.io/github/last-commit/beyerleinf/ngx-connect-four.svg)]() [![GitHub issues](https://img.shields.io/github/issues/beyerleinf/ngx-connect-four.svg?style=flat-square)](https://github.com/beyerleinf/ngx-connect-four/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/beyerleinf/ngx-connect-four.svg?style=flat-square)](https://github.com/beyerleinf/ngx-connect-four/pulls) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/beyerleinf/ngx-connect-four.svg?style=flat-square)
 
 ## Table of Contents
 
