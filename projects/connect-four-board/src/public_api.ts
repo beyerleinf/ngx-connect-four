@@ -3,3 +3,4 @@
  */
 
 export * from './lib/connect-four-board.module';
+export * from './lib/components';
