@@ -20,12 +20,12 @@ script:
 - npm run lint.all
 - npm run test.all
 - npm run build.cfb.prod
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build.cfb.prod; fi
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL"
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm login; fi
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm publish dist; fi
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; npm run doc.all
-- if [ "TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; sh deploy-docs.sh
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build.cfb.prod; fi
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL"
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm login; fi
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm publish dist; fi
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; npm run doc.all
+- if [ "TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; sh deploy-docs.sh
 after_success:
 - npm run codecov
 env:
