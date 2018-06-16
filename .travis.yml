@@ -38,14 +38,14 @@ jobs:
     - npm run build.cfb.prod
   - stage: package
     script:
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run build.cfb.prod; fi
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL"
-      npm login; fi
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm publish dist; fi
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run build.cfb.prod; fi
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL"
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm login; fi
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then npm publish dist; fi
   - stage: doc
     script:
-    - npm run doc.all
-    - sh deploy-docs.sh
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; npm run doc.all
+    - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; sh deploy-docs.sh
 env:
   global:
   - secure: m5C+oSm5OB0cwgsiXv3D6SpYZmnXnWzKY5mCVafCUEg5IxTkTa1JaEnVcuRQ1rItttEq1/3whv8Izq4hahsEDNi+76VR4v1LbyDl/LuZd14bcefRtboNbec8/7LsYBvUiQer14zvJBhyhudP9/TVBovL0aigMK8M7hRwpNELDp02piixJoDF+4+Wq875jCxDuNFb439+djsnOwZ8velO/Dn9mYgTVX0DJYAj8LJEdIE1GzVAcMp4hepKN6B2MTQCIUHzFTnklM1m5aevIAKXq+9qWDj2SHKPXOKNnjF7tfruywgGT7ShHJ1myt/jY3CDpzLxpfWXHf2r4ie9hoCGP7OCIt7nYJb0s3LR81vR3fTLJgAlIGai/xNYCCMG0+YS+lyMb7nAx6FUDTzIxoDaC8u7GPV/sRYXXtUJOCByAtZDNWtLfWt7ees4yXG88QIrhU+rRr7sJSnWtaj85Dx50EppIT73h7t6I9NXVPWHOgqaBYqagwbir/KElHChEP53hjz/jD3uKyZ9Z9YDKuQQgaOQaoL9nLk/LkMzUfMRSXP2POKq63lEpDnSNU0azb5zGnrIW24WHlFUcpPLHe1TKpOdEI2ZpF+FSIjGDedKvFnTH0uw2qHlh98pdaPAR8LZJ8FWNceZwysfuDJtJ49Ex0CnMHEJ9QzztYHEaqqW7yM=
