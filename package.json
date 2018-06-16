@@ -7,7 +7,7 @@
     "build.all": "npm run build.cfb",
     "build.all.prod": "npm run build.cfb.prod",
     "build.cfb": "ng build connect-four-board",
-    "build.cfb.prod": "npm run copy-all && npm run ng build connect-four-board --prod",
+    "build.cfb.prod": "npm run ng build connect-four-board --prod && npm run copy-all",
     "test.all": "npm run test.cfb",
     "test.cfb": "ng test connect-four-board --code-coverage",
     "codecov": "codecov -f coverage/*.json",
