@@ -25,8 +25,8 @@ export class BoardItemComponent implements OnChanges {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#FFFF00'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardItemComponent
    */
   @Input() playerOneColor: string = '#FFFF00';
@@ -39,8 +39,8 @@ export class BoardItemComponent implements OnChanges {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#FF0000'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardItemComponent
    */
   @Input() playerTwoColor: string = '#FF0000';
@@ -53,8 +53,8 @@ export class BoardItemComponent implements OnChanges {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#0000FF'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardItemComponent
    */
   @Input() backgroundColor: string = '#0000FF';

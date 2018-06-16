@@ -8,8 +8,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 @Component({selector: 'cfb-board', templateUrl: './board.component.html', styleUrls: ['./board.component.css']})
 export class BoardComponent {
   /**
-   * This event will be emitted when a item on the board is clicked.
-   * The data will be column index.
+   * This event will be emitted when an item on the board is clicked.
+   * The data will be the column index.
    *
    * @memberof BoardComponent
    */
@@ -31,8 +31,8 @@ export class BoardComponent {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#FFFF00'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardComponent
    */
   @Input() playerOneColor: string = '#FFFF00';
@@ -45,8 +45,8 @@ export class BoardComponent {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#FF0000'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardComponent
    */
   @Input() playerTwoColor: string = '#FF0000';
@@ -59,8 +59,8 @@ export class BoardComponent {
    * It has been verified that the verification of the hex input will be
    * guaranteed to work with all of the web safe colors.
    *
+   * See: https://websafecolors.info/color-chart
    * @default '#0000FF'
-   * @see https://websafecolors.info/color-chart
    * @memberof BoardComponent
    */
   @Input() backgroundColor: string = '#0000FF';
@@ -92,7 +92,7 @@ export class BoardComponent {
   }
 
   /**
-   * The method for when a item is clicked.
+   * The method for when an item is clicked.
    *
    * @param column The column index.
    * @memberof BoardComponent
