@@ -7,12 +7,15 @@
     "build.all": "npm run build.cfb",
     "build.all.prod": "npm run build.cfb.prod",
     "build.cfb": "ng build connect-four-board",
-    "build.cfb.prod": "ng build connect-four-board --prod",
+    "build.cfb.prod": "npm run copy-all && npm run ng build connect-four-board --prod",
     "test.all": "npm run test.cfb",
     "test.cfb": "ng test connect-four-board --code-coverage",
     "codecov": "codecov -f coverage/*.json",
     "lint.all": "npm run lint.cfb",
-    "lint.cfb": "tslint --project ./projects/connect-four-board/tsconfig.lib.json"
+    "lint.cfb": "tslint --project ./projects/connect-four-board/tsconfig.lib.json",
+    "copy-all": "npm run copy-readme && npm run copy-license",
+    "copy-readme": "cp README.md dist/connect-four-board",
+    "copy-license": "cp LICENSE.md dist/connect-four-board"
   },
   "private": true,
   "dependencies": {
