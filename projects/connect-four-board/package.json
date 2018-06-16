@@ -1,0 +1,27 @@
+{
+  "name": "@beyerleinf/ngx-cfb",
+  "version": "1.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beyerleinf/ngx-connect-four.git"
+  },
+  "keywords": [
+    "angular",
+    "connect",
+    "four",
+    "ng"
+  ],
+  "author": "Fabian Beyerlein",
+  "bugs": {
+    "url": "https://github.com/beyerleinf/ngx-connect-four/issues"
+  },
+  "homepage": "https://github.com/beyerleinf/ngx-connect-four#readme",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "devDependencies": {
+    "standard-version": "^4.3.0"
+  }
+}
