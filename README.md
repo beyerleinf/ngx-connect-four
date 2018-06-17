@@ -2,7 +2,7 @@
 
 A simple to use Angular component library for Connect Four.
 
-![Maintenance](https://img.shields.io/maintenance/yes/2018.svg?style=flat-square) [![license](https://img.shields.io/github/license/beyerleinf/ngx-connect-four.svg?style=flat-square)](https://github.com/beyerleinf/ngx-connect-four/blob/master/LICENSE.md) ![npm (scoped)](https://img.shields.io/npm/v/@beyerleinf/ngx-connect-four.svg?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/yes/2018.svg?style=flat-square) [![license](https://img.shields.io/github/license/beyerleinf/ngx-connect-four.svg?style=flat-square)](https://github.com/beyerleinf/ngx-connect-four/blob/master/LICENSE.md) ![npm (scoped)](https://img.shields.io/npm/v/@beyerleinf/ngx-cfb.svg?style=flat-square)
 
 ![Travis](https://img.shields.io/travis/beyerleinf/ngx-connect-four.svg?style=flat-square) [![codecov](https://codecov.io/gh/beyerleinf/ngx-connect-four/branch/master/graph/badge.svg)](https://codecov.io/gh/beyerleinf/ngx-connect-four) [![dependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four) [![devDependencies Status](https://david-dm.org/beyerleinf/ngx-connect-four/dev-status.svg)](https://david-dm.org/beyerleinf/ngx-connect-four?type=dev) [![Known Vulnerabilities](https://snyk.io/test/github/beyerleinf/ngx-connect-four/badge.svg)](https://snyk.io/test/github/beyerleinf/ngx-connect-four)
 
