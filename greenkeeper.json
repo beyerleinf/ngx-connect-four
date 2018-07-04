@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "projects/connect-four-board/ng-package.json",
+        "projects/connect-four-board/package.json"
+      ]
+    }
+  }
+}
